@@ -1,0 +1,48 @@
+{
+    "incident": {
+        "incident_id": "0.dfasd3fasdfa",
+        "resource_id": "",
+        "resource_name": "kubernetes gke--31bcc49a-u580",
+        "resource": {
+            "type": "gce_instance",
+            "labels": {
+                "instance_id": "333333333333",
+                "project_id": "gcp-project",
+                "zone": "us-east1-b"
+            }
+        },
+        "resource_display_name": "gke-example-instance-u580",
+        "resource_type_display_name": "VM Instance",
+        "metric": {
+            "type": "compute.googleapis.com/instance/cpu/utilization",
+            "displayName": "CPU utilization"
+        },
+        "started_at": 1628542498,
+        "policy_name": "Test_to_telegram",
+        "condition_name": "VM Instance - CPU utilization [MEAN]",
+        "condition": {
+            "name": "projects/gcp-project/alertPolicies/7640260497987603348/conditions/7640260497987600737",
+            "displayName": "VM Instance - CPU utilization [MEAN]",
+            "conditionThreshold": {
+                "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\"",
+                "aggregations": [
+                    {
+                        "alignmentPeriod": "300s",
+                        "perSeriesAligner": "ALIGN_MEAN"
+                    }
+                ],
+                "comparison": "COMPARISON_GT",
+                "thresholdValue": 0.05,
+                "duration": "0s",
+                "trigger": {
+                    "count": 1
+                }
+            }
+        },
+        "url": "https://console.cloud.google.com/monitoring/alerting/incidents/0.asdfa5asdf5a?project=gcp-project",
+        "state": "open",
+        "ended_at": null,
+        "summary": "CPU utilization for gcp-project gke-example-instance-u580 with metric labels {instance_name=gke-example-instance-u580} is above the threshold of 0.050 with a value of 0.104."
+    },
+    "version": "1.2"
+}

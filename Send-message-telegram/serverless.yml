@@ -1,0 +1,33 @@
+service: alerts-telegram
+
+provider:
+  name: google
+  stage: dev
+  runtime: nodejs14
+  region: us-east1
+  project: gcloud-project-name
+  credentials: ~/.config/gcloud/application_default_credentials.json
+  environment:
+    TELEGRAM_TOKEN: 1111111111:replace_to_you_token
+    GROUP_ID: -111111111
+
+frameworkVersion: '2'
+configValidationMode: warn
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!.gitignore/**'
+    - '!.git/**'
+
+functions:
+  SendToTelegram:
+    handler: subscribeTelegram
+    events:
+      - event: 
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: 'projects/${self:provider.project}/topics/AlertTelegram'
+
